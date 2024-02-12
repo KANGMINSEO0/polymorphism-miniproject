@@ -1,13 +1,15 @@
 package com.ohgiraffers.polymorphism.vo;
 
+import java.util.Scanner;
+
 public class Point {
 
-    private float x;
-    private float y;
+    private int x;
+    private int y;
 
     public Point() {}
 
-    public Point(float x, float y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -16,7 +18,7 @@ public class Point {
         return x;
     }
 
-    public void setX(float x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -24,7 +26,7 @@ public class Point {
         return y;
     }
 
-    public void setY(float y) {
+    public void setY(int y) {
         this.y = y;
     }
 
@@ -34,5 +36,14 @@ public class Point {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    public void printOutput() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("x :  ");
+        x = sc.nextInt();
+        System.out.print("y :  ");
+        y = sc.nextInt();
+        System.out.println("입력하신 좌표는 (" + x + ", " + y + ") 입니다.");
     }
 }

@@ -1,5 +1,11 @@
 package com.ohgiraffers.polymorphism.run;
 
+import com.ohgiraffers.polymorphism.view.Menu;
+
+
+
+import java.util.Scanner;
+
 public class Run {
 
     public static void main(String[] args) {
@@ -33,6 +39,10 @@ public class Run {
         2) 둘레값을 계산하여 출력하라
         3) 넓이값을 계산하여 출력하라
         */
+        Scanner sc = new Scanner(System.in);
+        Menu menu = new Menu();
+
+        menu.mainMenu();
 
 
     }

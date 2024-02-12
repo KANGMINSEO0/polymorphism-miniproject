@@ -5,21 +5,21 @@ import java.util.Scanner;
 
 public class Rectangle extends Point{
 
-    private int perimeter;
-    private int area;
-    private int[][] arr;
+    private double perimeter;
+    private double area;
+    private double[][] arr;
 
 
     public Rectangle() {}
 
-    public Rectangle(int x, int y, int perimeter, int area, int[][] arr) {
+    public Rectangle(int x, int y, double perimeter, double area, double[][] arr) {
         super(x, y);
         this.perimeter = perimeter;
         this.area = area;
         this.arr = arr;
     }
 
-    public int getPerimeter() {
+    public double getPerimeter() {
         return perimeter;
     }
 
@@ -27,7 +27,7 @@ public class Rectangle extends Point{
         this.perimeter = perimeter;
     }
 
-    public int getArea() {
+    public double getArea() {
         return area;
     }
 
@@ -35,11 +35,11 @@ public class Rectangle extends Point{
         this.area = area;
     }
 
-    public int[][] getArr() {
+    public double[][] getArr() {
         return arr;
     }
 
-    public void setArr(int[][] arr) {
+    public void setArr(double[][] arr) {
         this.arr = arr;
     }
 
@@ -51,32 +51,42 @@ public class Rectangle extends Point{
                 ", arr=" + Arrays.toString(arr) +
                 '}';
     }
+    public double rectPerimeter(int height, double[][] arr) {
+        Line line = new Line();
+        double width  = line.lineLength(arr);
+        perimeter = 2*(width + height);
+        return perimeter;
+    }
+    public double rectArea(int height, double[][] arr) {
+        Line line = new Line();
+        double width  = line.lineLength(arr);
+        System.out.println("width = " + width);
+        area = width * height;
+        System.out.println("height = " + height);
+        return area;
+    }
 
     @Override
     public void printOutput()  {
         Scanner sc = new Scanner(System.in);
-        int n = 4;
-//        int a = 3;
-//        int b = 2;
-        String[][] arrLine = new String[n][2];
-        int[][] arrLineInt = new int[n][2];
+        Rectangle rectangle = new Rectangle();
+        /* 사각형의 경우 좌표 2개와 높이 */
+        int n = 2;
+        double[][] arrLine = new double[n][2];
         for (int i = 0; i < n; i++) {
             System.out.print("p" + i + 1 + " x : ");
-            arrLine[i][0] = sc.next();
-            System.out.println();
+            arrLine[i][0] = sc.nextInt();
             System.out.print("p" + i + 1 + " y : ");
-            arrLine[i][1] = sc.next();
-            arrLineInt[i][0] = Integer.parseInt(arrLine[i][0]);
-            arrLineInt[i][1] = Integer.parseInt(arrLine[i][1]);
+            arrLine[i][1] = sc.nextInt();
             System.out.println();
         }
+        System.out.print("높이 : ");
+        int height = sc.nextInt();
 
         System.out.println("입력하신 좌표는 p1 : " + arrLine[0][0]+ ", " + arrLine[0][1]
-                + " , p2 : " + arrLine[1][0] + ", " + arrLine[1][1]
-                + " , p3 : " + arrLine[2][0] + ", " + arrLine[2][1]
-                + " , p4 : " + arrLine[3][0] + ", " + arrLine[3][1] +" 입니다. ");
-        System.out.println("둘레 : ");
-        System.out.println("넓이 : ");
+                + " , p2 : " + arrLine[1][0] + ", " + arrLine[1][1] + "이고 높이는 " + height + " 입니다. ");
+        System.out.println("둘레 : " + rectangle.rectPerimeter(height, arrLine));
+        System.out.println("넓이 : " + rectangle.rectArea(height, arrLine));
 
     }
 }
